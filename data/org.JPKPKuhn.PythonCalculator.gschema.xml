@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="gtk-multi-calculator">
+	<schema id="org.JPKPKuhn.PythonCalculator" path="/org/JPKPKuhn/PythonCalculator/">
+	</schema>
+</schemalist>

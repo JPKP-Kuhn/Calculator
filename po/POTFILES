@@ -1,0 +1,6 @@
+data/org.JPKPKuhn.PythonCalculator.desktop.in
+data/org.JPKPKuhn.PythonCalculator.metainfo.xml.in
+data/org.JPKPKuhn.PythonCalculator.gschema.xml
+src/main.py
+src/window.py
+src/window.ui
