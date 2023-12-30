@@ -10,6 +10,14 @@
       <object class="AdwToolbarView">
         <child type="top">
           <object class="AdwHeaderBar" id="header_bar">
+            <child type="start">
+              <object class="GtkMenuButton">
+                <property name="primary">True</property>
+                <property name="label">Options</property>
+                <property name="tooltip-text" translatable="yes">Calculator Options</property>
+                <property name="menu-model">calculator-options-menu</property>
+              </object>
+            </child>
             <child type="end">
               <object class="GtkMenuButton">
                 <property name="primary">True</property>
@@ -20,14 +28,33 @@
             </child>
           </object>
         </child>
-        <property name="content">
-          <object class="GtkLabel" id="label">
-            <property name="label">Hello, World!</property>
-            <style>
-              <class name="title-1"/>
-            </style>
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="hexpand">true</property>
+            <property name="vexpand">true</property>
+            <property name="margin-top">6</property>
+            <property name="margin-bottom">6</property>
+            <property name="margin-start">6</property>
+            <property name="margin-end">6</property>
+            <property name="child">
+              <object class="GtkTextView" id="main_text_view">
+                <property name="hexpand">true</property>
+                <property name="vexpand">true</property>
+                <property name="monospace">true</property>
+                <property name="wrap-mode">word</property>
+                <property name="editable">true</property>
+                <property name="cursor-visible">true</property>
+                <property name="pixels-above-lines">6</property>
+                <property name="pixels-below-lines">12</property>
+                <property name="pixels-inside-wrap">6</property>
+                <property name="margin-top">6</property>
+                <property name="margin-bottom">180</property>
+                <property name="margin-start">6</property>
+                <property name="margin-end">120</property>
+            </object>
+          </property>
           </object>
-        </property>
+        </child>
       </object>
     </property>
   </template>
@@ -47,4 +74,21 @@
       </item>
     </section>
   </menu>
+  <menu id="calculator-options-menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Simple Calculator</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Scientific Calculator</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Equation Calculator</attribute>
+      </item>
+    </section>
+  </menu>
 </interface>
+
+
+
+

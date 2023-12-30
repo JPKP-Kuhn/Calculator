@@ -5,7 +5,7 @@ from gi.repository import Gtk
 class GtkMultiCalculatorWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'GtkMultiCalculatorWindow'
 
-    label = Gtk.Template.Child()
+    main_text_view = Gtk.Template.Child()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
