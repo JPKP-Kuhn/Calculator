@@ -1,76 +1,179 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Created with Cambalache 0.16.0 -->
 <interface>
-  <requires lib="gtk" version="4.0"/>
+  <!-- interface-name window.ui -->
   <requires lib="Adw" version="1.0"/>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="gio" version="2.0"/>
+  <requires lib="libadwaita" version="1.4"/>
   <template class="GtkMultiCalculatorWindow" parent="AdwApplicationWindow">
-    <property name="default-width">600</property>
-    <property name="default-height">300</property>
-    <property name="title" translatable="yes">Gtk-multi-calculator</property>
     <property name="content">
       <object class="AdwToolbarView">
+        <child>
+          <object class="AdwPreferencesPage">
+            <child>
+              <object class="GtkGrid">
+                <child>
+                  <object class="GtkButton">
+                    <property name="label">x[]</property>
+                    <signal name="clicked" handler="on_operator_clicked"/>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="label">[]√</property>
+                    <signal name="clicked" handler="on_operator_clicked"/>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="label">sin()</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="label">[]/[]</property>
+                    <signal name="clicked" handler="on_operator_clicked"/>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">5</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="label">tg()</property>
+                    <signal name="clicked" handler="on_operator_clicked"/>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">4</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="label">cos()</property>
+                    <signal name="clicked" handler="on_operator_clicked"/>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">4</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="label">d/dx</property>
+                    <signal name="clicked" handler="on_operator_clicked"/>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">5</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="halign">end</property>
+                    <child>
+                      <object class="GtkLabel" id="input_display"/>
+                    </child>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="column-span">2</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="halign">end</property>
+                    <child>
+                      <object class="GtkLabel" id="result_display"/>
+                    </child>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="column-span">2</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="label">log[]</property>
+                    <signal name="clicked" handler="on_operator_clicked"/>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="column-span">1</property>
+                      <property name="row">2</property>
+                      <property name="row-span">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <signal name="clicked" handler="on_operator_clicked"/>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="column-span">1</property>
+                      <property name="row">3</property>
+                      <property name="row-span">1</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
         <child type="top">
           <object class="AdwHeaderBar" id="header_bar">
             <child type="start">
               <object class="GtkMenuButton">
-                <property name="primary">True</property>
                 <property name="label">Options</property>
-                <property name="tooltip-text" translatable="yes">Calculator Options</property>
                 <property name="menu-model">calculator-options-menu</property>
+                <property name="primary">True</property>
+                <property name="tooltip-text" translatable="yes">Calculator Options</property>
               </object>
             </child>
             <child type="end">
               <object class="GtkMenuButton">
-                <property name="primary">True</property>
                 <property name="icon-name">open-menu-symbolic</property>
-                <property name="tooltip-text" translatable="yes">Menu</property>
                 <property name="menu-model">primary_menu</property>
+                <property name="primary">True</property>
+                <property name="tooltip-text" translatable="yes">Menu</property>
               </object>
             </child>
           </object>
         </child>
-        <child>
-          <object class="GtkScrolledWindow">
-            <property name="hexpand">true</property>
-            <property name="vexpand">true</property>
-            <property name="margin-top">6</property>
-            <property name="margin-bottom">6</property>
-            <property name="margin-start">6</property>
-            <property name="margin-end">6</property>
-            <property name="child">
-              <object class="GtkTextView" id="main_text_view">
-                <property name="hexpand">true</property>
-                <property name="vexpand">true</property>
-                <property name="monospace">true</property>
-                <property name="wrap-mode">word</property>
-                <property name="editable">true</property>
-                <property name="cursor-visible">true</property>
-                <property name="pixels-above-lines">6</property>
-                <property name="pixels-below-lines">12</property>
-                <property name="pixels-inside-wrap">6</property>
-                <property name="margin-top">6</property>
-                <property name="margin-bottom">180</property>
-                <property name="margin-start">6</property>
-                <property name="margin-end">120</property>
-            </object>
-          </property>
-          </object>
-        </child>
       </object>
     </property>
+    <property name="default-height">300</property>
+    <property name="default-width">600</property>
+    <property name="title" translatable="yes">Gtk-multi-calculator</property>
   </template>
   <menu id="primary_menu">
     <section>
       <item>
-        <attribute name="label" translatable="yes">_Preferences</attribute>
         <attribute name="action">app.preferences</attribute>
+        <attribute name="label" translatable="yes">_Preferences</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
         <attribute name="action">win.show-help-overlay</attribute>
+        <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">_About Gtk-multi-calculator</attribute>
         <attribute name="action">app.about</attribute>
+        <attribute name="label" translatable="yes">_About Gtk-multi-calculator</attribute>
       </item>
     </section>
   </menu>
@@ -88,7 +191,3 @@
     </section>
   </menu>
 </interface>
-
-
-
-

@@ -1,5 +1,4 @@
-from gi.repository import Adw
-from gi.repository import Gtk
+from gi.repository import Adw, Gtk
 
 @Gtk.Template(resource_path='/org/JPKPKuhn/PythonCalculator/window.ui')
 class GtkMultiCalculatorWindow(Adw.ApplicationWindow):
